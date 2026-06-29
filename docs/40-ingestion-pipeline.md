@@ -25,7 +25,7 @@
         ↓
 [Make.com sends Hank a Telegram/email: "New submission #abc123 in moderator queue"]
         ↓
-[Hank opens moderator dashboard at prizmview.app/mod]
+[Hank opens moderator dashboard at prizm.app/mod]
         ↓
 [Reviews tweet, confirms player and club match, sets is_approved=true]
         ↓
@@ -89,7 +89,7 @@ We have no X API budget. The extension runs in the user's authenticated browser 
 ### Permissions
 
 - `https://x.com/*` (content script injection)
-- `https://prizmview.app/*` (API calls)
+- `https://prizm.app/*` (API calls)
 - No other host permissions, no broad storage permissions
 
 ## Phase 3: X Summon Bot

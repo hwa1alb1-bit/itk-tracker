@@ -11,7 +11,7 @@
                                        │ HTTPS
                           ┌────────────▼─────────────┐
                           │ Cloudflare (DNS + CDN)   │
-                          │  prizmview.app or sub    │
+                          │  prizm.app    │
                           └────────────┬─────────────┘
                                        │
                           ┌────────────▼─────────────┐
@@ -50,7 +50,7 @@
 | Layer | Service | Tier | Purpose |
 |---|---|---|---|
 | DNS / CDN | Cloudflare | Free | Domain, edge caching, optional Email Routing |
-| Frontend | Vercel | Hobby | Static + SSR rendering, edge functions |
+| Frontend | Next.js 16+ on Vercel | Hobby | App Router, RSC, TypeScript strict, Tailwind, shadcn/ui |
 | Database | Supabase | Free | PostgreSQL 500MB, Auth, Storage 1GB, Realtime |
 | Workflow | Make.com | Free | 1,000 ops/month, 2 active scenarios |
 | Archival | Internet Archive + archive.today | Free | Wayback snapshots of tweets |

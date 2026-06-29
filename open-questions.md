@@ -2,18 +2,11 @@
 
 Running log of unresolved decisions. Each entry has a status and a decision owner.
 
-## Q1: Domain conflict with Ops Dashboard
+## Q1: Domain (RESOLVED 2026-06-29)
 
-**Status:** Open. Blocking Phase 1.
-**Owner:** Hank.
-
-`prizmview.app` was previously planned as the deploy target for the personal Ops Dashboard (FastAPI + SQLite + APScheduler). Three options:
-
-1. Repoint apex to ITK tracker. Cleanest URL.
-2. Subdomain split. ITK at `itk.prizmview.app`, Ops at `ops.prizmview.app` or apex.
-3. Different spare domain for ITK.
-
-Need to verify `prizmview.app` is on a Cloudflare account Hank can edit (memory note `project_prizm_cloudflare_access_blocked.md` flags a separate zone as blocked).
+**Status:** Resolved.
+**Decision:** `prizm.app` is dedicated to ITK Tracker. The Ops Dashboard plan for this domain is dropped.
+**Action items:** Verify Hank has edit access to the `prizm.app` zone on Cloudflare before Phase 1. Update Ops Dashboard project memory to reflect cancellation of the domain plan (handled in `project_ops_dashboard.md`).
 
 ## Q2: Moderator pool
 
@@ -22,38 +15,33 @@ Need to verify `prizmview.app` is on a Cloudflare account Hank can edit (memory 
 
 Just Hank, or a small trusted volunteer team? Solo moderation caps submission throughput at whatever Hank can review in evenings. A team of 3 to 5 trusted users scales but introduces consistency risk.
 
-## Q3: Initial seed list
+## Q3: Initial seed list (RESOLVED 2026-06-29)
 
-**Status:** Open. Needed before Phase 1 ships.
-**Owner:** Hank.
+**Status:** Resolved on size and selection criteria.
+**Decision:** Approximately 25 accounts. Selection ranked by X follower count and observed engagement on transfer reporting (a popularity-weighted proxy). Final ranked list lives in `docs/70-nomination-governance.md`. Hank can prune or add before Phase 1 launch.
 
-Which 20 to 30 ITK accounts get tracked at launch? Candidates by reputation:
+## Q4: Frontend stack (RESOLVED 2026-06-29)
 
-- Tier 1 candidates: Fabrizio Romano, David Ornstein, Florian Plettenberg, Nicolo Schira, Gianluca Di Marzio, Christian Falk
-- Tier 2 candidates: James Pearce (Athletic Liverpool), Sam Lee, Matt Law, John Percy
-- Aspiring / community-nominated: TBD
+**Status:** Resolved.
+**Decision:** Next.js (App Router, RSC). Picked at Claude's discretion per Hank's delegation.
 
-Hank picks the launch list. The seed list informs presentation only. It does not affect scoring (tiers are derived from data).
+Rationale:
+- Largest ecosystem and best Supabase integration (Supabase docs are Next-first)
+- Server components handle SEO-friendly leaderboard pages without client-side JS hydration cost
+- Vercel-native deploy with zero config
+- Memory note `feedback_rsc_h1_server_component_for_seo.md` documents the known SEO gotcha (H1 inside `'use client'` + `useSearchParams` + `<Suspense fallback={null}>` renders empty initial HTML); pattern to avoid is documented
 
-## Q4: Frontend stack
+Stack details:
+- Next.js 16+ on App Router
+- TypeScript strict mode
+- Tailwind CSS for styling
+- `@supabase/ssr` for Supabase Auth + queries
+- shadcn/ui components (memory note `reference_shadcn_base_ui.md`: shadcn@latest uses Base UI, no `asChild` prop, use styled Link or render prop)
 
-**Status:** Open. Decide before Phase 1 begins.
-**Owner:** Hank.
+## Q5: Repo visibility (RESOLVED 2026-06-29)
 
-Next.js, SvelteKit, or Astro. All free on Vercel hobby. Decision criteria:
-
-- Next.js: largest ecosystem, best Supabase integration, RSC supports SEO-friendly leaderboard
-- SvelteKit: smaller bundle, simpler mental model
-- Astro: best for content-heavy static pages, ship-zero-JS by default
-
-Per memory `feedback_rsc_h1_server_component_for_seo.md`, Next.js SEO requires careful server-vs-client component boundaries.
-
-## Q5: Repo visibility
-
-**Status:** Open. Decide before first push to GitHub.
-**Owner:** Hank.
-
-Public from day one (community contributions, transparency-by-design) or private until Phase 1 ships (avoid public commitment to half-baked specs)?
+**Status:** Resolved.
+**Decision:** Public from day one. Push to `github.com/hwa1alb1-bit/itk-tracker` as public.
 
 ## Q6: Anti-Sybil at $0
 
@@ -76,7 +64,7 @@ Free tier allows 2 active scenarios. Plan calls for consolidating Wayback + Shee
 
 Appeals process requires a documented inbox. Options:
 
-1. Cloudflare Email Routing forwards `appeals@prizmview.app` to Hank's existing inbox. Free.
+1. Cloudflare Email Routing forwards `appeals@prizm.app` to Hank's existing inbox. Free.
 2. Resend or similar transactional email for outbound replies. Free tier likely sufficient.
 
 Memory note `reference_resend_auto_configure.md` flags Resend Auto Configure as the fastest path for DKIM/SPF/DMARC setup.

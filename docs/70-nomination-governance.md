@@ -92,35 +92,73 @@ Quarterly. Hank (and any future mod team) reviews the Tier A list:
 
 Outcomes logged in a public changelog at `/governance-log`.
 
-## Initial Seed List (Working Draft)
+## Initial Seed List (Phase 1 Launch)
 
-To be finalized by Hank before Phase 1 launch. Working list (~25 candidates):
+Approximately 25 accounts. Ranked by X follower count and observed engagement on transfer reporting. Follower estimates are point-in-time and approximate; refresh before launch.
 
-**Tier A (whitelisted at launch):**
+**Whitelisted at launch — Global / English-language top tier:**
 
-1. Fabrizio Romano
-2. David Ornstein
-3. Florian Plettenberg
-4. Nicolo Schira
-5. Gianluca Di Marzio
-6. Christian Falk
-7. James Pearce (The Athletic)
-8. Sam Lee (The Athletic)
-9. Matt Law (Telegraph)
-10. John Percy (Telegraph)
-11. Sky Sports News (institutional)
-12. BBC Sport (institutional)
-13. ESPN FC (institutional)
+| # | Handle | Outlet | Approx. followers | Notes |
+|---|---|---|---|---|
+| 1 | @FabrizioRomano | The Guardian / freelance | ~25M | The benchmark "here we go" account |
+| 2 | @David_Ornstein | The Athletic | ~1.5M | Highest signal-to-noise in English |
+| 3 | @BenJacobs_ | TalkSport / CBS | ~700K | Strong Middle East / coaching beat |
+| 4 | @JPercyTelegraph | Telegraph | ~400K | Forest, Notts County beat |
+| 5 | @Matt_Law_DT | Telegraph | ~400K | Chelsea beat |
+| 6 | @JamesPearceLFC | The Athletic | ~600K | Liverpool beat |
+| 7 | @SamLee | The Athletic | ~400K | Manchester City beat |
+| 8 | @paul_joyce | The Times | ~250K | Liverpool / north-west |
+| 9 | @henrywinter | The Times | ~1.1M | England, general |
+| 10 | @AdamCrafton_ | The Athletic | ~250K | Investigative |
 
-**Tier B candidates (require review):**
+**Whitelisted at launch — Continental Europe:**
 
-14. CaughtOffside (aggregator, low credibility traditionally)
-15. Indykaila News
-16. Football Insider
-17. The Mirror Football
-18. Daily Mail Football
-19. Sport Bible
+| # | Handle | Outlet | Approx. followers | Notes |
+|---|---|---|---|---|
+| 11 | @DiMarzio | Sky Italia | ~1.5M | Serie A flagship |
+| 12 | @NicoSchira | Freelance | ~500K | Italian + general |
+| 13 | @FabrizioFalk (Falk) | Bild | ~500K | Bundesliga flagship |
+| 14 | @Plettigoal (Plettenberg) | Sky Deutschland | ~700K | Bundesliga / Bayern rising |
+| 15 | @RudyGaletti | Sport Italia / freelance | ~250K | Italian + emerging |
+| 16 | @MoettoMatteo (Matteo Moretto) | Relevo | ~300K | La Liga + Italian |
+| 17 | @AgrestiRomeo | Goal Italia | ~150K | Juventus specialist |
+| 18 | @PSiebert (Sebastian Siebert) | RMC / freelance | ~150K | Ligue 1 |
 
-The institutional accounts (Sky, BBC, ESPN) probably need separate handling since they aggregate multiple journalists' reporting. Decide before launch.
+**Whitelisted at launch — Institutional / aggregators (for comparison signal):**
 
-Hank picks the final list. The seed informs presentation only. The data eventually overwrites assumptions.
+| # | Handle | Outlet | Notes |
+|---|---|---|---|
+| 19 | @SkySportsNews | Sky Sports | UK institutional baseline |
+| 20 | @BBCSport | BBC | UK institutional baseline |
+| 21 | @ESPNFC | ESPN | US-facing institutional |
+
+**Watchlist (added Tier B, `is_active=false` until 5 verified predictions at ≥70% accuracy):**
+
+| # | Handle | Notes |
+|---|---|---|
+| 22 | @CaughtOffside | High-volume aggregator, historically low credibility |
+| 23 | @indykaila | Long-running aggregator |
+| 24 | @FootballInsider247 | Mid-tier UK aggregator |
+| 25 | @TomBogert | MLS / North American specialist |
+
+### Selection Rationale
+
+- **Popularity:** every Tier A account exceeds ~150K followers and ranks in the top results when searching transfer terms on X
+- **Engagement:** prioritized accounts whose individual transfer tweets routinely break 1K+ replies and 10K+ likes
+- **Geographic coverage:** English-language EPL is heavily represented but balanced with Continental Europe to avoid the "Romano monoculture" the strategy doc warned about
+- **Market coverage:** Serie A (Di Marzio, Schira), Bundesliga (Falk, Plettenberg), La Liga (Moretto), Ligue 1 (Siebert), MLS (Bogert watchlist)
+
+### Aggregators Deliberately Excluded From Tier A
+
+- The Mirror Football, Daily Mail Football, Sport Bible: high follower counts but rebroadcast confirmed news; low original-reporting value
+- Football Daily, GOAL: aggregator desks, not individual journalists
+- Anonymous "ITK" accounts on r/soccer or transfer forums: not on X
+
+These get added later via Phase 2 community voting if community demand exists.
+
+### Pre-Launch Tasks
+
+- Confirm each handle is still active (X accounts get suspended or rename)
+- Update follower counts within 7 days of launch
+- Verify any GDPR-relevant journalists are comfortable with inclusion (Continental European accounts; courtesy email even though not legally required under US standard)
+- Backfill ~5 historical predictions per account from public X archives so launch profiles are not empty
