@@ -132,5 +132,8 @@ Required at `/terms`:
 - [ ] Terms of Service drafted and reviewed
 - [ ] DMCA agent registered with US Copyright Office
 - [ ] Appeals process tested end-to-end with a friendly test case
-- [ ] Cloudflare Email Routing configured for `appeals@`, `dmca@`, `corrections@`
+- [ ] Cloudflare Email Routing (inbound) configured for `appeals@`, `dmca@`, `corrections@` forwarding to `oneoddbob@gmail.com`
+- [ ] Cloudflare Email Sending (outbound) provisioned for `noreply@prizm.app` transactional replies
+- [ ] Gmail "Send mail as" alias configured so manual appeal responses show `appeals@prizm.app` as sender
+- [ ] DKIM / SPF / DMARC verified via Cloudflare DNS automation
 - [ ] Optional: pro-bono review by a US attorney familiar with publishing law

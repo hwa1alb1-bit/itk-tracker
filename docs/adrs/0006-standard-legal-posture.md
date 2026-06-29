@@ -57,7 +57,8 @@ Mirrored in `50-legal-methodology.md`:
 - [ ] Terms of service drafted
 - [ ] DMCA agent registered with US Copyright Office
 - [ ] Appeals form tested end-to-end
-- [ ] Cloudflare Email Routing configured for `appeals@`, `dmca@`, `corrections@`
+- [ ] Cloudflare Email Routing (inbound) configured for `appeals@`, `dmca@`, `corrections@`
+- [ ] Cloudflare Email Sending (outbound) provisioned for transactional replies
 - [ ] Optional: pro-bono review by US attorney
 
 ## Alternatives Considered

@@ -54,7 +54,8 @@
 | Database | Supabase | Free | PostgreSQL 500MB, Auth, Storage 1GB, Realtime |
 | Workflow | Make.com | Free | 1,000 ops/month, 2 active scenarios |
 | Archival | Internet Archive + archive.today | Free | Wayback snapshots of tweets |
-| Email | Cloudflare Email Routing | Free | Appeals inbox forwarding |
+| Email (inbound) | Cloudflare Email Routing | Free | Forwards appeals@/dmca@/corrections@ to Hank's inbox |
+| Email (outbound) | Cloudflare Email Sending via Workers | Free | Transactional replies from noreply@prizm.app |
 | Source code | GitHub | Free | Repo hosting, Issues, Actions |
 
 ## Data Flow: Submission

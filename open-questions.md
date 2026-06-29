@@ -8,12 +8,18 @@ Running log of unresolved decisions. Each entry has a status and a decision owne
 **Decision:** `prizm.app` is dedicated to ITK Tracker. The Ops Dashboard plan for this domain is dropped.
 **Action items:** Verify Hank has edit access to the `prizm.app` zone on Cloudflare before Phase 1. Update Ops Dashboard project memory to reflect cancellation of the domain plan (handled in `project_ops_dashboard.md`).
 
-## Q2: Moderator pool
+## Q2: Moderator pool (RESOLVED 2026-06-29)
 
-**Status:** Open. Affects Phase 1 throughput.
-**Owner:** Hank.
+**Status:** Resolved.
+**Decision:** Solo moderation by Hank for Phase 1. No volunteer team.
 
-Just Hank, or a small trusted volunteer team? Solo moderation caps submission throughput at whatever Hank can review in evenings. A team of 3 to 5 trusted users scales but introduces consistency risk.
+Implications baked into the design:
+
+- Submission queue throughput capped at Hank's evening review capacity (estimated 10-30 per day)
+- No moderator-consistency risk because there is only one decision-maker
+- Vacation handling: a public banner pattern at the top of the site reads "Reviews paused until [date]" when Hank flags an away period via an env var or a single-row DB toggle
+- Phase 2 voting reduces per-decision moderator burden by promoting accounts through the community rather than per-submission review
+- A second moderator can be added later by adding a row to `predictors`-adjacent moderator table; the schema already supports `moderator_reviewed_by UUID` without per-mod RLS changes
 
 ## Q3: Initial seed list (RESOLVED 2026-06-29)
 
@@ -43,28 +49,50 @@ Stack details:
 **Status:** Resolved.
 **Decision:** Public from day one. Push to `github.com/hwa1alb1-bit/itk-tracker` as public.
 
-## Q6: Anti-Sybil at $0
+## Q6: Anti-Sybil at $0 (DEFERRED to Phase 2)
 
-**Status:** Provisionally resolved. Revisit before Phase 2.
-**Owner:** Hank.
+**Status:** Deferred.
+**Decision:** Phase 1 has no public users and no voting surface. Sybil risk is zero in Phase 1.
 
-MVP uses moderator approval for new account nominations. User voting returns in Phase 2 alongside the browser extension. Open question: what abuse threshold triggers a voter ban, and who reviews appeals?
+Re-opens when Phase 2 design begins (browser extension + community voting). At that point, define:
 
-## Q7: Make.com scenario consolidation
+- Vote rate limits per account per day
+- Account-age minimum for voting eligibility
+- IP cluster detection thresholds
+- Vote-buying detection signals
+- Voter-ban appeals process
 
-**Status:** Open. Affects ingestion pipeline design.
-**Owner:** Hank (after first scenario build).
+## Q7: Make.com scenario consolidation (RECLASSIFIED as ops-monitoring task)
 
-Free tier allows 2 active scenarios. Plan calls for consolidating Wayback + Sheets mirror into one scenario, and deletion audit + moderator notification into the other. Verify the consolidation does not break the 1,000 ops/month budget in practice during the first transfer window.
+**Status:** Not a pre-launch decision. Operational verification post-launch.
 
-## Q8: Email infrastructure for appeals
+The plan in [`docs/40-ingestion-pipeline.md`](docs/40-ingestion-pipeline.md) collapses four logical jobs into two Make.com scenarios using internal branching:
 
-**Status:** Open. Needed before Phase 1 ships.
-**Owner:** Hank.
+- Scenario 1: Wayback archival + archive.today + Google Sheets sync (parallel branches)
+- Scenario 2: Daily deletion audit + moderator notifications (conditional routing)
 
-Appeals process requires a documented inbox. Options:
+Estimated ~600 ops/month within the 1,000 free-tier ceiling. The verification is whether real transfer-window traffic stays inside that ceiling.
 
-1. Cloudflare Email Routing forwards `appeals@prizm.app` to Hank's existing inbox. Free.
-2. Resend or similar transactional email for outbound replies. Free tier likely sufficient.
+Action after launch: check the Make.com ops dashboard at the end of every transfer window (January, summer). If usage projects above 80% of free tier two months in a row, either tighten branch logic or pay $9/mo for Make.com Core tier.
 
-Memory note `reference_resend_auto_configure.md` flags Resend Auto Configure as the fastest path for DKIM/SPF/DMARC setup.
+## Q8: Email infrastructure for appeals (RESOLVED 2026-06-29)
+
+**Status:** Resolved. Cloudflare end-to-end.
+
+**Decision:**
+
+- **Inbound:** Cloudflare Email Routing forwards `appeals@prizm.app`, `dmca@prizm.app`, `corrections@prizm.app` to Hank's existing inbox (`oneoddbob@gmail.com`). Free.
+- **Outbound (transactional replies from the site):** Cloudflare Email Sending via Workers. Free tier. Sends from `noreply@prizm.app` for automated confirmations.
+- **Outbound (manual appeal responses):** Hank replies from Gmail with a "Send mail as" alias `appeals@prizm.app` configured via SMTP. Cloudflare Email Routing supports outbound SMTP relay for verified domains.
+- **DKIM / SPF / DMARC:** Managed via Cloudflare DNS automatically when Email Routing + Email Sending are enabled. No manual record entry needed.
+
+Setup tasks (Phase 1 prep):
+
+1. Verify Hank has edit access to the `prizm.app` zone on Cloudflare
+2. Enable Email Routing in the Cloudflare dashboard for `prizm.app`
+3. Add the three forwarding rules (appeals, dmca, corrections → oneoddbob@gmail.com)
+4. Enable Email Sending and provision an API token for the Worker
+5. In Gmail, configure "Send mail as" with the appeals@ alias
+6. Test end-to-end: send to appeals@, confirm forwarding; reply from Gmail, confirm headers show appeals@prizm.app as sender
+
+The `cloudflare-email-service` skill in this Claude install covers the implementation details when Phase 1 build begins.
