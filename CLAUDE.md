@@ -33,6 +33,14 @@ Phase 0: planning only. Specs live in `docs/`. ADRs in `docs/adrs/`. Unresolved 
 - All secrets in env vars, never hardcoded
 - GitHub identity for personal repos: handle `hwa1alb1-bit`, commit email `oneoddbob@gmail.com`
 
+## Phase 1 Build Requirements
+
+Before writing any frontend code in Phase 1:
+
+- Read [docs/80-seo-aeo-strategy.md](docs/80-seo-aeo-strategy.md) end-to-end.
+- Every new page must pass the build checklist in Section 9 of that doc before merging.
+- SEO and AEO/GEO are not retrofit. They are first-class concerns applied at template design time.
+
 ## What Not To Do
 
 - Do not write code in Phase 0. The deliverable is specs.

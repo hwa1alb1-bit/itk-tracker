@@ -30,6 +30,7 @@ The soccer transfer market is driven by real-time social-media reporting from jo
 - `docs/50-legal-methodology.md` — US posture, public-figure standard, appeals process
 - `docs/60-roadmap.md` — Phased budget unlocks
 - `docs/70-nomination-governance.md` — How accounts get on and off the tracker
+- `docs/80-seo-aeo-strategy.md` — SEO + AEO/GEO requirements applied at Phase 1 build time
 - `docs/adrs/` — Architecture Decision Records
 - `open-questions.md` — Unresolved decisions
 
