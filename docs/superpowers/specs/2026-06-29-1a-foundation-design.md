@@ -1,7 +1,8 @@
 # Sub-Phase 1A: Foundation
 
-**Status:** In progress
+**Status:** Complete (with 3 non-blocking deferrals)
 **Started:** 2026-06-29
+**Completed:** 2026-07-01
 **Path:** B (document-as-we-go)
 
 Records what got built during 1A, what's deferred, and what remains open. Not a blueprint — a running log of actual provisioning outcomes.
@@ -16,14 +17,21 @@ End 1A with a live, green-deploying Next.js site at `https://prizmview.app`, all
 - [x] Next.js 16 App Router repo pushed to GitHub, builds green on Vercel
 - [x] SEO scaffolding present: `robots.txt`, `sitemap.xml`, `llms.txt`, page metadata
 - [x] AI crawler allow-list explicit in `robots.txt`
-- [ ] Cloudflare zone verified accessible for `prizmview.app`
-- [ ] DNS: `prizmview.app` + `www.prizmview.app` pointed at Vercel
-- [ ] Vercel env vars set: Supabase URL/anon/service role, site URL
-- [ ] Cloudflare Email Routing rules active: `appeals@`, `dmca@`, `corrections@` → `oneoddbob@gmail.com`
-- [ ] Cloudflare Email Sending API token provisioned for outbound
-- [ ] Gmail "Send mail as" alias configured for `appeals@prizmview.app`
-- [ ] DMCA agent registered with US Copyright Office ($6 filing)
-- [ ] SSL certificate active on `https://prizmview.app` (auto-managed by Vercel)
+- [x] Cloudflare zone verified accessible for `prizmview.app` (zone tag `c7e14db3f6ea89f22659e754c0e32238`)
+- [x] DNS: `prizmview.app` (A record) + `www.prizmview.app` (CNAME) pointed at Vercel
+- [x] Vercel env vars set: Supabase URL/anon/service role, site URL (redeploy `dpl_B3iHaoNcrXiusk61egjTcWjaZKo7`)
+- [x] Cloudflare Email Routing rules active: `appeals@`, `dmca@`, `corrections@` → `oneoddbob@gmail.com`
+- [ ] **DEFERRED:** Cloudflare Email Sending — endpoint returns 404 in beta. Revisit via dashboard or use Resend fallback when Phase 1D/1E needs outbound
+- [ ] **DEFERRED to Phase 1E:** Gmail "Send mail as" alias for `appeals@prizmview.app`
+- [ ] **DEFERRED to Phase 1G (pre-launch):** DMCA agent registered with US Copyright Office ($6 filing)
+- [x] SSL certificate active on both `https://prizmview.app` (308 → www) and `https://www.prizmview.app`
+
+## Live Verification (2026-07-01)
+
+- `https://www.prizmview.app` returns 200 OK with `<h1>Most Accurate Soccer Transfer Journalists</h1>`
+- `https://prizmview.app` returns 308 to `https://www.prizmview.app/`
+- HSTS header present, `Server: Vercel`, edge region iad1
+- Latest production deployment `dpl_B3iHaoNcrXiusk61egjTcWjaZKo7` (redeploy after env vars set)
 
 ## What Got Built
 
