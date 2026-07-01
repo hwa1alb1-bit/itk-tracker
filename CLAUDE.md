@@ -30,6 +30,7 @@ Phase 0: planning only. Specs live in `docs/`. ADRs in `docs/adrs/`. Unresolved 
 - Domain: `prizmview.app` (dedicated to this project; the Ops Dashboard plan for this domain is dropped)
 - Frontend stack: Next.js (App Router, RSC) + TypeScript strict + Tailwind + shadcn/ui + `@supabase/ssr`
 - GitHub repo: `github.com/hwa1alb1-bit/itk-tracker` (public)
+- **Git workflow: feature branch → PR → CI → auto-merge when green.** No direct commits to main. Hank explicitly authorized auto-merge on green CI for this project (overrides the global no-auto-merge policy). Branch naming: `feat/`, `fix/`, `chore/`, `docs/` prefixes.
 - All secrets in env vars, never hardcoded
 - GitHub identity for personal repos: handle `hwa1alb1-bit`, commit email `oneoddbob@gmail.com`
 
