@@ -1,0 +1,19 @@
+# ITK Tracker
+
+> A public-interest accountability site for soccer transfer journalism. We track the prediction accuracy of "In The Know" (ITK) accounts on X, score them with a published Wilson-confidence-bounded algorithm, and publish profile pages with verified historical records.
+
+## Status
+
+This site is under construction. Full leaderboard, predictor profiles, and methodology are coming soon.
+
+## What we will publish
+
+- Global, league, and country leaderboards of journalist transfer prediction accuracy
+- Per-journalist profile pages with verified prediction history
+- Per-player and per-club aggregations of who predicted what
+
+## Key facts
+
+- Operated by Hank Alberts (United States)
+- All scoring uses public X tweets and public transfer resolutions (Wikipedia, BBC, ESPN, official club announcements)
+- Predictions archived to Wayback Machine and archive.today on submission
