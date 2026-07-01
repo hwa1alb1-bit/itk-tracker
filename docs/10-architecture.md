@@ -11,7 +11,7 @@
                                        │ HTTPS
                           ┌────────────▼─────────────┐
                           │ Cloudflare (DNS + CDN)   │
-                          │  prizm.app    │
+                          │  prizmview.app    │
                           └────────────┬─────────────┘
                                        │
                           ┌────────────▼─────────────┐
@@ -55,7 +55,7 @@
 | Workflow | Make.com | Free | 1,000 ops/month, 2 active scenarios |
 | Archival | Internet Archive + archive.today | Free | Wayback snapshots of tweets |
 | Email (inbound) | Cloudflare Email Routing | Free | Forwards appeals@/dmca@/corrections@ to Hank's inbox |
-| Email (outbound) | Cloudflare Email Sending via Workers | Free | Transactional replies from noreply@prizm.app |
+| Email (outbound) | Cloudflare Email Sending via Workers | Free | Transactional replies from noreply@prizmview.app |
 | Source code | GitHub | Free | Repo hosting, Issues, Actions |
 
 ## Data Flow: Submission

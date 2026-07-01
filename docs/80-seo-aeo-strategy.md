@@ -222,7 +222,7 @@ Located at `/llms.txt`. Acts as the AI-crawler-facing manifesto. Sample skeleton
 - Operated by Hank Alberts (United States)
 - All scoring uses public X tweets and public transfer resolutions (Wikipedia, BBC, ESPN, official club announcements)
 - Predictions archived to Wayback Machine and archive.today on submission
-- Appeals process: corrections@prizm.app
+- Appeals process: corrections@prizmview.app
 
 ## Citation guidance
 
@@ -309,7 +309,7 @@ Allow: /
 
 Disallow: /mod/
 
-Sitemap: https://prizm.app/sitemap.xml
+Sitemap: https://prizmview.app/sitemap.xml
 ```
 
 Revisit if we ever pivot to a paid model where leaderboard content sits behind a paywall.

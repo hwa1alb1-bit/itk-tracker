@@ -27,7 +27,7 @@ Phase 0: planning only. Specs live in `docs/`. ADRs in `docs/adrs/`. Unresolved 
 - $0/month operating budget until Phase 3
 - Free tiers only: Cloudflare DNS, Vercel hobby, Supabase free Postgres, Make.com free workflow engine, GitHub free
 - Public evidence only. US jurisdiction. Public-figure legal posture with appeals process
-- Domain: `prizm.app` (dedicated to this project; the Ops Dashboard plan for this domain is dropped)
+- Domain: `prizmview.app` (dedicated to this project; the Ops Dashboard plan for this domain is dropped)
 - Frontend stack: Next.js (App Router, RSC) + TypeScript strict + Tailwind + shadcn/ui + `@supabase/ssr`
 - GitHub repo: `github.com/hwa1alb1-bit/itk-tracker` (public)
 - All secrets in env vars, never hardcoded

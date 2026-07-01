@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://prizm.app",
+      url: "https://prizmview.app",
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1,

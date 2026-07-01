@@ -8,7 +8,7 @@ Records what got built during 1A, what's deferred, and what remains open. Not a 
 
 ## Goal
 
-End 1A with a live, green-deploying Next.js site at `https://prizm.app`, all external integrations wired end-to-end (GitHub → Vercel → CDN → DNS → Supabase → Cloudflare email), with a holding-page splash and SEO foundation in place. No user-facing features. All feature work happens in 1B onward.
+End 1A with a live, green-deploying Next.js site at `https://prizmview.app`, all external integrations wired end-to-end (GitHub → Vercel → CDN → DNS → Supabase → Cloudflare email), with a holding-page splash and SEO foundation in place. No user-facing features. All feature work happens in 1B onward.
 
 ## Exit Criteria
 
@@ -16,14 +16,14 @@ End 1A with a live, green-deploying Next.js site at `https://prizm.app`, all ext
 - [x] Next.js 16 App Router repo pushed to GitHub, builds green on Vercel
 - [x] SEO scaffolding present: `robots.txt`, `sitemap.xml`, `llms.txt`, page metadata
 - [x] AI crawler allow-list explicit in `robots.txt`
-- [ ] Cloudflare zone verified accessible for `prizm.app`
-- [ ] DNS: `prizm.app` + `www.prizm.app` pointed at Vercel
+- [ ] Cloudflare zone verified accessible for `prizmview.app`
+- [ ] DNS: `prizmview.app` + `www.prizmview.app` pointed at Vercel
 - [ ] Vercel env vars set: Supabase URL/anon/service role, site URL
 - [ ] Cloudflare Email Routing rules active: `appeals@`, `dmca@`, `corrections@` → `oneoddbob@gmail.com`
 - [ ] Cloudflare Email Sending API token provisioned for outbound
-- [ ] Gmail "Send mail as" alias configured for `appeals@prizm.app`
+- [ ] Gmail "Send mail as" alias configured for `appeals@prizmview.app`
 - [ ] DMCA agent registered with US Copyright Office ($6 filing)
-- [ ] SSL certificate active on `https://prizm.app` (auto-managed by Vercel)
+- [ ] SSL certificate active on `https://prizmview.app` (auto-managed by Vercel)
 
 ## What Got Built
 
@@ -71,7 +71,7 @@ End 1A with a live, green-deploying Next.js site at `https://prizm.app`, all ext
 
 ### SEO Foundation (per `docs/80-seo-aeo-strategy.md`)
 
-- `robots.ts` explicitly allows GPTBot, ClaudeBot, Claude-Web, PerplexityBot, GoogleOther, Google-Extended, CCBot, and default `*`. Disallows `/mod/`. Sitemap pointer set to `https://prizm.app/sitemap.xml`.
+- `robots.ts` explicitly allows GPTBot, ClaudeBot, Claude-Web, PerplexityBot, GoogleOther, Google-Extended, CCBot, and default `*`. Disallows `/mod/`. Sitemap pointer set to `https://prizmview.app/sitemap.xml`.
 - `sitemap.ts` stub currently lists only the homepage. Will expand as pages ship in 1B/1C.
 - `public/llms.txt` includes the AEO manifesto stub with brand positioning, key facts, and archival guarantees.
 - `app/layout.tsx` sets `metadataBase`, title template, and default description at the root layout level.
@@ -89,7 +89,7 @@ End 1A with a live, green-deploying Next.js site at `https://prizm.app`, all ext
 
 ### Cloudflare Zone Access
 
-Wrangler CLI is authenticated as `hwa1.alb1@gmail.com` (account `06194d230f5a7d371ad30a1d984e0868`), a different email than `oneoddbob@gmail.com`. Need to confirm which Cloudflare account owns the `prizm.app` zone before DNS records or Email Routing rules can be added.
+Wrangler CLI is authenticated as `hwa1.alb1@gmail.com` (account `06194d230f5a7d371ad30a1d984e0868`), a different email than `oneoddbob@gmail.com`. Need to confirm which Cloudflare account owns the `prizmview.app` zone before DNS records or Email Routing rules can be added.
 
 Options once confirmed:
 - If `hwa1.alb1@gmail.com` owns it, wrangler is ready
@@ -102,25 +102,25 @@ Not blocking the build (the Supabase client is imported but not invoked on the h
 - `NEXT_PUBLIC_SUPABASE_URL=https://gxbiedwhsvteirhisxai.supabase.co`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY=<legacy JWT anon key from Supabase MCP>`
 - `SUPABASE_SERVICE_ROLE_KEY=<from Supabase dashboard — not exposed via MCP by design>`
-- `NEXT_PUBLIC_SITE_URL=https://prizm.app`
+- `NEXT_PUBLIC_SITE_URL=https://prizmview.app`
 
 ## Design Deviations From Original Plan
 
 None significant. The scaffold matches the strategy in `docs/10-architecture.md` and `docs/80-seo-aeo-strategy.md`.
 
-One micro-choice: `metadataBase` in `app/layout.tsx` reads `NEXT_PUBLIC_SITE_URL` with a `https://prizm.app` fallback. Prevents SSR crashes if the env var isn't set locally.
+One micro-choice: `metadataBase` in `app/layout.tsx` reads `NEXT_PUBLIC_SITE_URL` with a `https://prizmview.app` fallback. Prevents SSR crashes if the env var isn't set locally.
 
 ## Verification
 
 Manual verification steps for the finished 1A phase:
 
-1. `curl -I https://prizm.app` returns 200 with valid SSL
-2. `curl https://prizm.app/robots.txt` returns the AI-crawler allow-list
-3. `curl https://prizm.app/sitemap.xml` returns valid XML with the homepage entry
-4. `curl https://prizm.app/llms.txt` returns the AEO manifesto
-5. Test email to `appeals@prizm.app` from an external inbox arrives in `oneoddbob@gmail.com`
+1. `curl -I https://prizmview.app` returns 200 with valid SSL
+2. `curl https://prizmview.app/robots.txt` returns the AI-crawler allow-list
+3. `curl https://prizmview.app/sitemap.xml` returns valid XML with the homepage entry
+4. `curl https://prizmview.app/llms.txt` returns the AEO manifesto
+5. Test email to `appeals@prizmview.app` from an external inbox arrives in `oneoddbob@gmail.com`
 6. Vercel dashboard shows all four env vars marked with green checkmarks across Production/Preview/Development
-7. Lighthouse score on `https://prizm.app` mobile ≥90 across all four categories (Performance, Accessibility, Best Practices, SEO)
+7. Lighthouse score on `https://prizmview.app` mobile ≥90 across all four categories (Performance, Accessibility, Best Practices, SEO)
 
 ## Next Sub-Phase
 

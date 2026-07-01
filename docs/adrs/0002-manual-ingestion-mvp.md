@@ -59,6 +59,6 @@ A separate authenticated route `/mod` (Supabase Auth, mod role required):
 ## Alternatives Considered
 
 1. **Public no-moderation submission.** Skip the moderator queue, let submissions go live immediately. Rejected: spam and bad-faith submissions would destroy the data quality. Same reason Wikipedia has admins.
-2. **Email-based submission.** Users email `submit@prizm.app` with a tweet URL. Rejected: harder to parse, no structured metadata, higher moderator burden.
+2. **Email-based submission.** Users email `submit@prizmview.app` with a tweet URL. Rejected: harder to parse, no structured metadata, higher moderator burden.
 3. **Discord bot in a community server.** Lower friction within Discord but limits reach to one community. Rejected as a primary mechanism but could supplement Phase 2.
 4. **Twitter/X DM-based submission.** Doesn't avoid X API costs (DMs count as paid API). Rejected.

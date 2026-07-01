@@ -5,8 +5,8 @@ Running log of unresolved decisions. Each entry has a status and a decision owne
 ## Q1: Domain (RESOLVED 2026-06-29)
 
 **Status:** Resolved.
-**Decision:** `prizm.app` is dedicated to ITK Tracker. The Ops Dashboard plan for this domain is dropped.
-**Action items:** Verify Hank has edit access to the `prizm.app` zone on Cloudflare before Phase 1. Update Ops Dashboard project memory to reflect cancellation of the domain plan (handled in `project_ops_dashboard.md`).
+**Decision:** `prizmview.app` is dedicated to ITK Tracker. The Ops Dashboard plan for this domain is dropped.
+**Action items:** Verify Hank has edit access to the `prizmview.app` zone on Cloudflare before Phase 1. Update Ops Dashboard project memory to reflect cancellation of the domain plan (handled in `project_ops_dashboard.md`).
 
 ## Q2: Moderator pool (RESOLVED 2026-06-29)
 
@@ -81,18 +81,18 @@ Action after launch: check the Make.com ops dashboard at the end of every transf
 
 **Decision:**
 
-- **Inbound:** Cloudflare Email Routing forwards `appeals@prizm.app`, `dmca@prizm.app`, `corrections@prizm.app` to Hank's existing inbox (`oneoddbob@gmail.com`). Free.
-- **Outbound (transactional replies from the site):** Cloudflare Email Sending via Workers. Free tier. Sends from `noreply@prizm.app` for automated confirmations.
-- **Outbound (manual appeal responses):** Hank replies from Gmail with a "Send mail as" alias `appeals@prizm.app` configured via SMTP. Cloudflare Email Routing supports outbound SMTP relay for verified domains.
+- **Inbound:** Cloudflare Email Routing forwards `appeals@prizmview.app`, `dmca@prizmview.app`, `corrections@prizmview.app` to Hank's existing inbox (`oneoddbob@gmail.com`). Free.
+- **Outbound (transactional replies from the site):** Cloudflare Email Sending via Workers. Free tier. Sends from `noreply@prizmview.app` for automated confirmations.
+- **Outbound (manual appeal responses):** Hank replies from Gmail with a "Send mail as" alias `appeals@prizmview.app` configured via SMTP. Cloudflare Email Routing supports outbound SMTP relay for verified domains.
 - **DKIM / SPF / DMARC:** Managed via Cloudflare DNS automatically when Email Routing + Email Sending are enabled. No manual record entry needed.
 
 Setup tasks (Phase 1 prep):
 
-1. Verify Hank has edit access to the `prizm.app` zone on Cloudflare
-2. Enable Email Routing in the Cloudflare dashboard for `prizm.app`
+1. Verify Hank has edit access to the `prizmview.app` zone on Cloudflare
+2. Enable Email Routing in the Cloudflare dashboard for `prizmview.app`
 3. Add the three forwarding rules (appeals, dmca, corrections → oneoddbob@gmail.com)
 4. Enable Email Sending and provision an API token for the Worker
 5. In Gmail, configure "Send mail as" with the appeals@ alias
-6. Test end-to-end: send to appeals@, confirm forwarding; reply from Gmail, confirm headers show appeals@prizm.app as sender
+6. Test end-to-end: send to appeals@, confirm forwarding; reply from Gmail, confirm headers show appeals@prizmview.app as sender
 
 The `cloudflare-email-service` skill in this Claude install covers the implementation details when Phase 1 build begins.
